@@ -29,5 +29,9 @@ class AuthServiceProvider extends ServiceProvider
         Passport::loadKeysFrom(__DIR__.'/../secrets/oauth');
 
         Passport::hashClientSecrets();
+
+        Passport::tokensExpireIn(now()->addDays(15));
+        Passport::refreshTokensExpireIn(now()->addDays(30));
+        Passport::personalAccessTokensExpireIn(now()->addMoths(6));
     }
 }
